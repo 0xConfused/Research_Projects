@@ -4,8 +4,10 @@ import re
 import random
 
 ### Sanitize TAC List ###
+TACSOURCE = 'C:/Users/******/*******/*****/********/******/********-**/********/**** *******/TACcodes.txt'
+
 def anyTAC():
-    TACcodes = open('C:/Users/Auste/AppData/Local/Programs/Python/Python37-32/Projects/IMEI Project/TACcodes.txt','r')
+    TACcodes = open(TACSOURCE,'r')
     TAClist = []
     for line in TACcodes:
         TAC = re.findall('\d{8}', line)
@@ -18,7 +20,7 @@ def randTAC(TAClist):
     return TAClist[rand]
 
 def realTAC():
-    TACcodes = open('C:/Users/Auste/AppData/Local/Programs/Python/Python37-32/Projects/IMEI Project/TACcodes.txt','r')
+    TACcodes = open(TACSOURCE,'r')
     TAClist = []
     for line in TACcodes:
         if not re.search('^.*fake TAC codes', line, re.IGNORECASE):
@@ -28,7 +30,7 @@ def realTAC():
     return TAClist
 
 def selectTAC(query):
-    TACcodes = open('C:/Users/Auste/AppData/Local/Programs/Python/Python37-32/Projects/IMEI Project/TACcodes.txt','r')
+    TACcodes = open(TACSOURCE,'r')
     TAClist = []
     for line in TACcodes:
         if re.search(' [\W\D]*'+query+'( |\D{1,2})[\W\D]*', line, re.IGNORECASE):
